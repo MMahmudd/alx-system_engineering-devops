@@ -1,0 +1,2 @@
+#!/bin/bush
+tr -d "Cc"
