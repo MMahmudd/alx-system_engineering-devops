@@ -1,2 +1,10 @@
 #!/bin/bash
-printf "%0\n" $(( $((5#$(echo $WATER | tr water 01234))) + $((5#$(echo $STIR | tr stir. 01234))) )) | tr 01234567 bestcholl
+#printf "%0\n" $(( $((5#$(echo $WATER | tr water 01234))) + $((5#$(echo $STIR | tr stir. 01234))) )) | tr 01234567 bestcholl
+WATER=$(echo "$WATER" | tr -d '\n' | od -An -t uC)
+STIR=$(echo "$STIR" | tr -d '\n' | od -An -t uC)
+
+SUM=$((WATER + STIR))
+
+BESTCHOL=$(printf '%d' "$SUM" | while read num; do printf \\$(printf '%03o' $((num/8/8%8*64+num/8%8*8+num%8))); done)
+
+echo "$BESTCHOL"
