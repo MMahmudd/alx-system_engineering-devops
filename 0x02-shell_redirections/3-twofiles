@@ -1,2 +1,3 @@
 #!/bin/bash
-echo /ete/passwd  /etc/hosts
+cat /etc/passwd
+cat /etc/hosts
