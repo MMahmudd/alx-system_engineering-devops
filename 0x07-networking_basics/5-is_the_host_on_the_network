@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script pings an IP address and  passed it as an argument
+#  IP_address as an_argument and pings it five_times
 
 if [ $# -eq 0 ]
 then
