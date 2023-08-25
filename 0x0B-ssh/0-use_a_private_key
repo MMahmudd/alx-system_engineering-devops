@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Server_details
+server_ip="192.168.0.1"
+user="ubuntu"
+
+# SSH command_using_single-character flags
+ssh -i ~/.ssh/school $user@$server_ip
