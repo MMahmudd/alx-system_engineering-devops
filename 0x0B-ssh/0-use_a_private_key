@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 # SSH command_using_single-character flags
-ssh ubuntu -i ~/.ssh/school
+ssh ubuntu@192.168.0.1 -i ~/.ssh/school
