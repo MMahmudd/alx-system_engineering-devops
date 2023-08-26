@@ -1,4 +1,4 @@
-# This_anifest creates a _file_at /tmp
+# This_anifest creates_a _file_at /tmp
 file { '/tmp/school':
     ensure  => 'file',
     owner   => 'www-data',
