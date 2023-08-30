@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
-# Scrip_ that_configures_a_w Ubuntu machine_to_respect above_requirements
+#Configuration_a_new Nginx server_so_ /redirect_me_is_redirecting to_another_page
 
-sudo apt-get update
-sudo apt-get install -y nginx
-
-echo "Hello World!" | sudo tee /var/www/html/index.html
-string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.blog.ehoneahobed.com permanent;"
-sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
-
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo "Hello World" | sudo tee /var/www/html/index
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/ permanent;' /etc/nginx/sites-available/default
 sudo service nginx restart
