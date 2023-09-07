@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# This_script retrieves DNS information for_a_given subdomain_of a_domain.
+
+# Function_to_query DNS and display_information
+get_dns_info() {
+    local subdomain="$1"
+    local domain="$2"
+
+    # Query_DNS for_the_specified subdomain_and_extract_relevant_information
+    dns_info=$(dig "$subdomain.$domain" | awk '/ANSWER SECTION:/ {getline; print}')
+    
+    # Extract_the_record type_and_destination_IP
+    record_type=$(echo "$dns_info" | awk '{print $4}')
+    destination=$(echo "$dns_info" | awk '{print $5}')
+
+    # Display_the_information
+    echo "The subdomain $subdomain is a $record_type record and points to $destination"
+}
+
+# Main_script
+if [ $# -eq 1 ]; then
+    # Display_information for_default_subdomains
+    get_dns_info "www" "$1"
+    get_dns_info "lb-01" "$1"
+    get_dns_info "web-01" "$1"
+    get_dns_info "web-02" "$1"
+elif [ $# -eq 2 ]; then
+    # Display_information for_the specified_subdomain
+    get_dns_info "$2" "$1"
+else
+    echo "Usage: $0 <domain> [subdomain]"
+    exit 1
+fi
+
+exit 0
