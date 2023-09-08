@@ -1,1 +1,1 @@
-perission of shell
+permission of shell
