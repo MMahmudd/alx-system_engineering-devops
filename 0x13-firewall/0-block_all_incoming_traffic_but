@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+# config a ufw_firwall to not allowed all incoming_trafic
+# unless for TCP_Ports as 443,80, and 22.
+
 sudo apt-get -y update
 sudo apt-get -y install ufw
 sudo ufw disable
