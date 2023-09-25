@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-"""Accesse_a REST_API for_to_do list_of_employees"""
+"""Accessing_a REST API for_todo lists_of_employees"""
 
 import requests
 import sys
-
 
 if __name__ == '__main__':
     employeeId = sys.argv[1]
@@ -12,6 +11,9 @@ if __name__ == '__main__':
 
     response = requests.get(url)
     employeeName = response.json().get('name')
+
+    # Truncate_the employeeName to_a_maximum of_18_characters
+    employeeName = employeeName[:18] if len(employeeName) > 18 else employeeName
 
     todoUrl = url + "/todos"
     response = requests.get(todoUrl)
