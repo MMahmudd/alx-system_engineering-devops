@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Delivery App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Food Delivery App</h1>
+    <p>Hello, {{ current_user.username }}!</p>
+    {% if current_user.is_authenticated %}
+        <a href="{{ url_for('order') }}">Place an Order</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+    {% endif %}
+</body>
+</html>
+
